@@ -1,0 +1,25 @@
+.button {
+    width: fit-content;
+    padding: 15px 15px;
+    border: 0.2px solid #357960;
+    background-color: #357960;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.outline {
+    border-color: rgba(53, 121, 96, 0.5);
+    background-color: white;
+    color: #357960;
+}
+.secondary {
+    background-color: white;
+    color: #424242;
+    border: 0.5px solid rgba(66, 66, 66, 0.3);
+    font-size: 16px;
+}

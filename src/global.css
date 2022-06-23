@@ -1,0 +1,173 @@
+.flex {
+    display: flex;
+}
+.fRow {
+    flex-direction: row;
+}
+.fColumn {
+    flex-direction: column;
+}
+.fCenter {
+    align-items: center;
+    justify-content: center;
+}
+.jCenter {
+    justify-content: center;
+}
+.aCenter {
+    align-items: center;
+}
+.jBet {
+    justify-content: space-between;
+}
+.jAro {
+    justify-content: space-around;
+}
+.gap2 {
+    gap: 2px;
+}
+.gap5 {
+    gap: 5px;
+}
+.gap10 {
+    gap: 10px;
+}
+.gap15 {
+    gap: 15px;
+}
+.gap20 {
+    gap: 20px;
+}
+.gap40 {
+    gap: 40px;
+}
+.gap60 {
+    gap: 60px;
+}
+.pad3 {
+    padding: 3px;
+}
+.pad5 {
+    padding: 5px;
+}
+.pad10 {
+    padding: 10px;
+}
+.pad15 {
+    padding: 15px;
+}
+.pad20 {
+    padding: 20px;
+}
+.grid {
+    display: grid;
+}
+.n2Col {
+    grid-template-columns: repeat(2, 1fr);
+}
+.n2Col7030 {
+    grid-template-columns: 70% 30%;
+}
+.n2Col6535 {
+    grid-template-columns: 65% 35%;
+}
+.n2Col6040 {
+    grid-template-columns: 60% 40%;
+}
+.n1Col {
+    grid-template-columns: repeat(1, 1fr);
+}
+.n2Row {
+    grid-template-rows: 50% 50%;
+}
+.mAuto {
+    margin: auto;
+}
+.oHidden {
+    overflow: hidden;
+}
+.oAuto {
+    overflow: auto;
+}
+.oYAuto {
+    overflow-y: auto;
+}
+.br5 {
+    border-radius: 5px;
+}
+.fWrap {
+    flex-wrap: wrap;
+}
+.fBold {
+    font-weight: bold;
+}
+.maxH100 {
+    max-height: 100px;
+}
+.maxH150 {
+    max-height: 150px;
+}
+.maxH200 {
+    max-height: 200px;
+}
+.w20 {
+    width: 20%;
+}
+.w50 {
+    width: 50%;
+}
+.w80 {
+    width: 80%;
+}
+.w100 {
+    width: 100%;
+}
+.dN {
+    display: none;
+}
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 21px;
+    resize: none;
+    border: 1px solid rgba(53, 121, 96, 0.5);
+    outline: none;
+    font-family: inherit;
+}
+.mr20 {
+    margin-right: 20px;
+}
+.mt120 {
+    margin-top: 120px;
+}
+.mt80 {
+    margin-top: 80px;
+}
+.fileRow {
+    padding: 20px;
+    width: 100%;
+    background-color: rgba(230, 230, 230, 1);
+    border-radius: 5px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+.hFitCont {
+    height: fit-content;
+}
+.boxSha {
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+.h100 {
+    height: 100%;
+}
+.bgrW {
+    background-color: white;
+}
+.mB40 {
+    margin-bottom: 40px;
+}
+.mB60 {
+    margin-bottom: 60px;
+}
+.mB80 {
+    margin-bottom: 80px;
+}
