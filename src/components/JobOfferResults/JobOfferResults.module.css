@@ -1,0 +1,14 @@
+.title {
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 36px;
+    margin: 0;
+}
+.link {
+    text-align: left;
+    font-weight: 500;
+    width: 100%;
+    font-size: 21px;
+    margin: 0;
+}

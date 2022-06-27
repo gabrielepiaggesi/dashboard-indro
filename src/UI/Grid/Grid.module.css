@@ -1,0 +1,24 @@
+.grid {
+    width: 100%;
+    font-size: 18px;
+    position: relative;
+    background-color: transparent;
+}
+tr {
+    background-color: white;
+    cursor: pointer;
+}
+tbody tr:hover {
+    background-color: transparent;
+}
+.header {
+    background-color: #f5f6f6;
+    font-weight: 500;
+    font-size: 21px;
+    position: sticky;
+    top: 0;
+}
+td {
+    padding: 15px;
+    border: 1px solid rgba(66, 66, 66, 0.10);
+}

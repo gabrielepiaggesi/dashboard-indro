@@ -1,0 +1,23 @@
+.title {
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 36px;
+    margin: 0 auto 20px auto;
+}
+.jobOfferCard {
+    padding: 15px;
+    /* border: 1px lightgrey solid; */
+    min-width: 300px;
+}
+.jobTopic {
+    text-align: left;
+    font-weight: bold;
+    font-size: 23px;
+    margin: 0;
+    width: 100%;
+}
+.details p {
+    font-size: 21px;
+    margin: 3px 0;
+}

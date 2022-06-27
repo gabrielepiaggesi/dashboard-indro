@@ -1,0 +1,19 @@
+.title {
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 36px;
+    margin: 0;
+}
+.question {
+    text-align: left;
+    font-weight: 500;
+    font-size: 21px;
+    margin: 0;
+}
+.checkInput {
+    transform: scale(1.8);
+}
+.checkInput:not([disabled]) {
+    cursor: pointer;
+}

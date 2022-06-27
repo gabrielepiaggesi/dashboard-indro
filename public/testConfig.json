@@ -1,0 +1,52 @@
+[
+    {
+        "label": "Punti della Domanda",
+        "key": "points",
+        "tag": "select",
+        "options": [3,5,8,13]
+    },
+    {
+        "label": "Difficolta Domanda",
+        "key": "points",
+        "tag": "select",
+        "options": ["Bassa", "Media", "Alta"]
+    },
+    {
+        "label": "Domanda",
+        "type": "text",
+        "key": "question",
+        "tag": "input",
+        "placeholder": ""
+    },
+    {
+        "label": "Testi Utili alla domanda",
+        "type": "text",
+        "key": "texts",
+        "tag": "ul"
+    },
+    {
+        "label": "1 Immagine Utile",
+        "type": "file",
+        "key": "file",
+        "tag": "input"
+    },
+    {
+        "label": "Opzioni Risposte",
+        "type": "text",
+        "key": "options",
+        "tag": "ul"
+    },
+    {
+        "label": "Seleziona Risposta Esatta",
+        "type": "radio",
+        "key": "points",
+        "tag": "select",
+        "linkUl": 5
+    },
+    {
+        "label": "Layout Risposte",
+        "key": "points",
+        "tag": "select",
+        "options": ["Lista", "Griglia"]
+    }
+]

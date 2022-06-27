@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "Javascript & Typescript",
+        "done": false,
+        "mode": "onebyone"
+    },
+    {
+        "id": 2,
+        "title": "ReactJs & Git",
+        "done": false,
+        "mode": "onebyone"
+    },
+    {
+        "id": 3,
+        "title": "Attitude & Organization",
+        "done": false,
+        "mode": "list"
+    }
+]

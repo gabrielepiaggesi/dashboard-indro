@@ -1,0 +1,19 @@
+.title {
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 36px;
+    margin: 0;
+}
+.quizCard {
+    padding: 15px;
+    /* border: 1px lightgrey solid; */
+    min-width: 300px;
+}
+.quizTopic {
+    text-align: left;
+    font-weight: 500;
+    font-size: 23px;
+    margin: 0 auto 20px auto;
+    width: 100%;
+}

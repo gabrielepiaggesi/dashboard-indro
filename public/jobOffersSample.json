@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "job": {
+            "id": 1,
+            "role": "Frontend Developer",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "companyEquipment": "Computer Apple, Zaino, Maglietta",
+            "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "requirements": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "niceToHave": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "createdAt": "23/06/2022",
+            "expiredAt": "1/07/2022",
+            "expired": false,
+            "mode": "hybrid",
+            "type": "fulltime",
+            "contract": "indeterminato",
+            "RAL": "RAL Compresa tra 30.000-40.000 in base alla seniority"
+        },
+        "company": {
+            "id": 1,
+            "name": "Together Price",
+            "logo": "companylogo.webp",
+            "size": "30",
+            "birthdate": "1/1/2017",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "website": "togetherprice.com",
+            "bio": "Together Price e' una startup che ha una piattaforma per condividere il prezzo dei servizi digitali con altre persone per permettere agli utenti di risparmiare soldi e godere di ulteriori servizi."
+        }
+    },
+    {
+        "id": 2,
+        "job": {
+            "id": 2,
+            "role": "Backend Developer",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "companyEquipment": "Computer Apple, Zaino, Maglietta",
+            "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "requirements": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "niceToHave": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "createdAt": "23/06/2022",
+            "expiredAt": "1/07/2022",
+            "expired": false,
+            "mode": "hybrid",
+            "type": "fulltime",
+            "contract": "indeterminato",
+            "RAL": "Compresa tra 30.000-40.000 in base alla seniority"
+        },
+        "company": {
+            "id": 1,
+            "name": "Together Price",
+            "logo": "companylogo.webp",
+            "size": "30",
+            "birthdate": "1/1/2017",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "website": "togetherprice.com",
+            "bio": "Together Price e' una startup che ha una piattaforma per condividere il prezzo dei servizi digitali con altre persone per permettere agli utenti di risparmiare soldi e godere di ulteriori servizi."
+        }
+    },
+    {
+        "id": 3,
+        "job": {
+            "id": 3,
+            "role": "Project Manager",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "companyEquipment": "Computer Apple, Zaino, Maglietta",
+            "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "requirements": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "niceToHave": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "createdAt": "23/06/2022",
+            "expiredAt": "1/07/2022",
+            "expired": false,
+            "mode": "hybrid",
+            "type": "fulltime",
+            "contract": "indeterminato",
+            "RAL": "Compresa tra 30.000-40.000 in base alla seniority"
+        },
+        "company": {
+            "id": 1,
+            "name": "Together Price",
+            "logo": "companylogo.webp",
+            "size": "30",
+            "birthdate": "1/1/2017",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "website": "togetherprice.com",
+            "bio": "Together Price e' una startup che ha una piattaforma per condividere il prezzo dei servizi digitali con altre persone per permettere agli utenti di risparmiare soldi e godere di ulteriori servizi."
+        }
+    },
+    {
+        "id": 4,
+        "job": {
+            "id": 4,
+            "role": "Social Media Manager",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "companyEquipment": "Computer Apple, Zaino, Maglietta",
+            "jobDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "requirements": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "niceToHave": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel hendrerit eros. Morbi quis ornare leo. Fusce non massa iaculis, fermentum augue a, condimentum tellus. Nam quis semper neque, a suscipit tellus. Nam metus purus, eleifend id dignissim ac, ornare vitae nisi. Cras imperdiet posuere mi, nec malesuada nulla faucibus laoreet. Curabitur id libero quam. Nulla nulla sapien, dictum sit amet pretium nec, vulputate ut nisl. Aliquam erat volutpat. Maecenas tempor elit quis felis malesuada fermentum. Pellentesque aliquam, magna quis consectetur elementum, nisl lectus sagittis elit, ac dapibus nisl risus eget erat. Nulla nec diam in nunc euismod placerat. Morbi bibendum ultrices lacus eget fermentum.",
+            "createdAt": "23/06/2022",
+            "expiredAt": "1/07/2022",
+            "expired": false,
+            "mode": "hybrid",
+            "type": "fulltime",
+            "contract": "indeterminato",
+            "RAL": "Compresa tra 30.000-40.000 in base alla seniority"
+        },
+        "company": {
+            "id": 1,
+            "name": "Together Price",
+            "logo": "companylogo.webp",
+            "size": "30",
+            "birthdate": "1/1/2017",
+            "city": "Roma",
+            "country": "Italy",
+            "address": "Via Marsala 28H, 00185",
+            "website": "togetherprice.com",
+            "bio": "Together Price e' una startup che ha una piattaforma per condividere il prezzo dei servizi digitali con altre persone per permettere agli utenti di risparmiare soldi e godere di ulteriori servizi."
+        }
+    }
+]

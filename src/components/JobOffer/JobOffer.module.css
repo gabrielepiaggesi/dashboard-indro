@@ -1,0 +1,28 @@
+.section:first-child p:first-child {
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 36px;
+    margin: 0;
+}
+.section:first-child p:last-child {
+    text-align: left;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
+}
+.section p:first-child {
+    text-align: left;
+    font-weight: 500;
+    font-size: 21px;
+    margin: 0;
+}
+.section p:last-child, .section li {
+    text-align: left;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
+}
+ul {
+    margin-block-start: 0;
+}
