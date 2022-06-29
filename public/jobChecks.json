@@ -52,7 +52,7 @@
     {
         "key": "salaryCheck",
         "checked": false,
-        "text": "Busta Paga - (File PDF/IMG)"
+        "text": "Ultima Busta Paga - (File PDF/IMG)"
     },
     {
         "key": "shortBio",
@@ -62,7 +62,7 @@
     {
         "key": "days",
         "checked": false,
-        "text": "Preavviso dopo Dimissioni"
+        "text": "Quanti Giorni di Preavviso dopo Dimissioni"
     },
     {
         "key": "unemployed",
