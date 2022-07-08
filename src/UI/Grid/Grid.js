@@ -63,6 +63,7 @@ const Grid = (props) => {
                 position: "relative"
             }
         }>
+            {rows.length === 0 && <p className={classes.noRows}>{props.noRowsMessage || 'Non ci sono elementi'}</p>}
             <table className={classes.grid}>
                 <thead>
                     <tr key={-1} className={classes.header}>

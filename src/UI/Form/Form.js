@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './Form.module.css';
 import '../../global.css';
 import Button from '../Button/Button';
 
+const transformInputs = (inputs, values) => {
+    return values ? [...inputs].map(elem => {
+        let i = {...elem};
+        if (i.tag !== 'ul') {
+            i.value = values[i.key] ? values[i.key] : undefined;
+        }
+        if (i.tag === 'ul') {
+            i.list = values[i.key] ? values[i.key] : [];
+        }
+        return i;
+    }): [...inputs].map(elem => ({...elem}));
+}
+
 const Form = (props) => {
-    const [userInfos, setUserInfos] = useState(props.config);
+    const [userInfos, setUserInfos] = useState(transformInputs(props.config, props.defaultValues));
     const [btnDisabled, setBtnDisabled] = useState(false);
     const [btnKey, setBtnKey] = useState(undefined);
     let lastInputValue = "";
@@ -23,10 +36,14 @@ const Form = (props) => {
             if (userInfos[idx].tag === "ul") {
                 formValue[key] = userInfos[idx]?.list?.map(e => e?.value);
             }
+            if (userInfos[idx].type === "checkbox") {
+                formValue[key] = event.target.elements[key]?.checked ? 1 : 0;
+            }
+            if (userInfos[idx].type === 'number') {
+                formValue[key] = +formValue[key];
+            }
         });
         props.onSave(formValue);
-        // TODO: call server to save formValue as new job offer
-        // navigate('/', {replace: true});
     };
 
     const onAddElementHandler = (inputIdx) => {
@@ -46,6 +63,10 @@ const Form = (props) => {
             userInfos[inputIdx].list[elemIdx].value = lastInputValue || userInfos[inputIdx].list[elemIdx].value;
             userInfos[inputIdx].list[elemIdx].saved = true;
             setUserInfos(prevState => ([...userInfos]));
+
+            if (props.onSaveItem) {
+                props.onSaveItem(userInfos[inputIdx].key, userInfos[inputIdx].list[elemIdx], elemIdx+1);
+            }
         }
         setBtnDisabled(undefined);
         setBtnDisabled(false);
@@ -62,6 +83,9 @@ const Form = (props) => {
 
     const onRemoveElementHandler = (inputIdx, elemIdx) => {
         if (userInfos[inputIdx].list.length) {
+            if (props.onDeleteItem) {
+                props.onDeleteItem(userInfos[inputIdx].key, userInfos[inputIdx].list[elemIdx]);
+            }
             userInfos[inputIdx].list.splice(elemIdx, 1);
         }
         setUserInfos(prevState => ([...userInfos]));
@@ -71,9 +95,25 @@ const Form = (props) => {
 
     return (
         <>
-            <p className={classes.title}>{props.title}</p>
+            {props.title && <p className={classes.title}>{props.title}</p>}
             <form className={`${classes.form} flex fColumn gap20`} onSubmit={onSubmitHandler}>
                 {userInfos.map((info, infoIdx) => 
+
+                    (info.type === "checkbox") ? 
+                    <div key={info.key} className="flex fRow aCenter gap15">
+                        <input 
+                                className={`pad15 br5 boxSha ${classes.checkInput}`}
+                                type={info.type} 
+                                name={info.key} 
+                                placeholder={info.placeholder}
+                                defaultValue={info.value || null}
+                                defaultChecked={info.value || false}
+                            />
+                        <label>{info.label}</label>
+                    </div>
+
+                    :
+
                     <div key={info.key} className="flex fColumn gap10">
                         <label>{info.label}</label>
                         {(info.tag === "input") && 
@@ -82,20 +122,23 @@ const Form = (props) => {
                                 type={info.type} 
                                 name={info.key} 
                                 placeholder={info.placeholder}
+                                defaultValue={info.value || null}
                             />
                         }
                         {(info.tag === "select") && 
-                            <select className="pad15 br5 f1 boxSha" name={info.key}>
+                            <select className="pad15 br5 f1 boxSha" name={info.key} defaultValue={info.value || null}>
                                 {info.options && info.options.map((opt, idx) => 
-                                    <option key={idx+opt} value={opt}>{opt}</option>
+                                    <option key={info.key + '-' + opt} id={idx+opt} value={opt}>{opt}</option>
                                 )}
-                                {!info.options && info.linkUl >= 0 && userInfos[info.linkUl]?.list?.map((opt, idx) => 
-                                    <option key={idx+opt.value} value={opt.value}>{opt.value}</option>
+                                {!info.options && info.linkUl >= 0 && 
+                                userInfos[info.linkUl]?.list?.length && 
+                                userInfos[info.linkUl]?.list?.map((opt, idx) => 
+                                    <option key={info.key + '-' + opt.value} id={idx+opt.value} value={opt.value}>{opt.value}</option>
                                 )}
                             </select>
                         }
                         {(info.tag === "textarea") && 
-                            <textarea className="pad15 br5 boxSha" type={info.type} name={info.key} placeholder={info.placeholder} />
+                            <textarea className="pad15 br5 boxSha" defaultValue={info.value || null} type={info.type} name={info.key} placeholder={info.placeholder} />
                         }
                         {(info.tag === "ul") && 
                             (
@@ -104,7 +147,7 @@ const Form = (props) => {
                                         <div key={info.key+elemIdx+elem.value} className="flex fRow aCenter gap10">
                                             <input 
                                                 disabled={elem.saved}
-                                                key={"input"+info.key+elemIdx} 
+                                                key={elem.id || 'input'+info.key+elemIdx} 
                                                 className="pad15 br5 f1 boxSha" 
                                                 type={info.type} 
                                                 name={info.key+"_"+elemIdx} 

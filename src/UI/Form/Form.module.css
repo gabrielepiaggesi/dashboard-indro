@@ -19,3 +19,10 @@
 .form .checkInput:not([disabled]) {
     cursor: pointer;
 }
+
+.checkInput {
+    transform: scale(1.8);
+}
+.checkInput:not([disabled]) {
+    cursor: pointer;
+}

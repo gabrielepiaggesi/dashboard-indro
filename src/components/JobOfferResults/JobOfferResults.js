@@ -55,14 +55,14 @@ const columns = [
   ].map(c => ({ ...c, ...defaultColumnProperties }));
   
 
-const JobOfferResults = () => {
-    const [results, setResults] = useState(undefined);
+const JobOfferResults = (props) => {
+    const [results, setResults] = useState(props.results || []);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        loadJSON('../jobOfferResultsSample.json')
-        .then(sample => setResults(sample));
-    }, []);
+    // useEffect(() => {
+    //     loadJSON('../jobOfferResultsSample.json')
+    //     .then(sample => setResults(sample));
+    // }, []);
 
     if (!results) return (<p>Loading...</p>);
 
@@ -74,7 +74,7 @@ const JobOfferResults = () => {
         <Card className="flex fColumn gap20 w100 pad20">
             <p className={classes.title}>Classifica Candidati</p>
             <p className={classes.link}>Link da condividere sul web o ai candidati: https://google.com</p>
-            <Grid maxHeight={700} columns={columns} rows={results} onRowClick={onRowClickHandler} />
+            <Grid height={300} columns={columns} rows={results} onRowClick={onRowClickHandler} noRowsMessage="Ancora nessun candidato da mostrare, invia il link qui sopra ai candidati." />
         </Card>
     );
 };

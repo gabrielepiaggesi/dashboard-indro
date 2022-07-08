@@ -6,12 +6,12 @@ import Button from '../../UI/Button/Button';
 import { loadJSON } from '../../utils';
 
 const JobOfferQuizList = (props) => {
-    const [quizList, setQuizList] = useState(undefined);
+    const [quizList, setQuizList] = useState(props.quizs || []);
 
-    useEffect(() => {
-        loadJSON('../quizsSample.json')
-        .then(sample => setQuizList(sample));
-    }, []);
+    // useEffect(() => {
+    //     loadJSON('../quizsSample.json')
+    //     .then(sample => setQuizList(sample));
+    // }, []);
 
     if (!quizList) return (<p>Loading...</p>);
 
@@ -23,9 +23,9 @@ const JobOfferQuizList = (props) => {
                         <Button outline={true} onClick={() => props.onOpenQuiz('new')}>CREA TEST</Button>
                     </Card>
                 {quizList.map(quiz => 
-                    <Card key={quiz.id} className={`flex fColumn gap40 ${classes.quizCard}`}>
-                        <p className={classes.quizTopic}>{quiz.title}</p>
-                        <Button outline={true} onClick={() => props.onOpenQuiz(quiz.id)}>APRI</Button>
+                    <Card key={quiz.jq_id} className={`flex fColumn gap40 ${classes.quizCard}`}>
+                        <p className={classes.quizTopic}>{quiz.topic}</p>
+                        <Button outline={true} onClick={() => props.onOpenQuiz(quiz.jq_id)}>APRI</Button>
                     </Card>
                 )}
             </div>

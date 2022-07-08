@@ -1,38 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from '../../UI/Button/Button';
 import classes from './JobOffersList.module.css';
 import '../../global.css';
 import Card from '../../UI/Card/Card';
-import { loadJSON } from '../../utils'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { getCompanyJobOffers } from '../../lib/api';
+import AppContext from '../../store/app-context';
 
-const JobOffersList = (props) => {
+const JobOffersList = () => {
+    const params = useParams();
+    const ctx = useContext(AppContext);
     const [jobOffersList, setJobOffersList] = useState(undefined);
+    const [error, setError] = useState(undefined);
 
-    useEffect(() => {
-        loadJSON('jobOffersSample.json')
-        .then(sample => setJobOffersList(sample));
-    }, []);
+    useEffect(() => { ctx.setCompany(params.companyId); getJobOffers(); }, []);
 
-    if (!jobOffersList) return (<p>Loading...</p>);
+    const getJobOffers = () => {
+        getCompanyJobOffers(params.companyId)
+        .then(data => setJobOffersList(data))
+        .catch(err => {
+            setError(err);
+            setJobOffersList([]);
+            alert('Errore', error);
+        })
+    };
+
+    if (!jobOffersList) {
+        return (<div className="flex fCenter"><LoadingSpinner /></div>);
+    }
 
     return (
         <div className="flex fColumn gap40 w80 mAuto pad20">
             <p className={classes.title}>Posizioni Lavorative Aperte</p>
             <div className="grid n4Col gap20">
                     <Card key={0} className={`flex fColumn fCenter gap20 ${classes.jobOfferCard}`}>
-                    <Link to="/new"><Button outline={true}>NUOVA</Button></Link>
+                    <Link to={`/newJobForm/${params.companyId}/new`}><Button outline={true}>NUOVA</Button></Link>
                     </Card>
                 {jobOffersList.map(jobOffer => 
-                    <Card key={jobOffer.job.id} className={`flex fColumn gap20 ${classes.jobOfferCard}`}>
-                        <p className={classes.jobTopic}>{jobOffer.job.role}</p>
+                    <Card key={jobOffer.id} className={`flex fColumn gap20 ${classes.jobOfferCard}`}>
+                        <p className={classes.jobTopic}>{jobOffer.role}</p>
                         <div className={classes.details}>
-                            <p>{jobOffer.job.mode}</p>
-                            <p>{jobOffer.job.contract}</p>
-                            <p>{jobOffer.job.city},{jobOffer.job.country}</p>
-                            <p>Creata il {jobOffer.job.createdAt}</p>
+                            <p>{jobOffer.mode}</p>
+                            <p>{jobOffer.contract_type}</p>
+                            <p>{jobOffer.city},{jobOffer.country}</p>
+                            <p>Creata il {jobOffer.created_at.substring(0,10)}</p>
                         </div>
-                        <Link to={`/jobOffer/${jobOffer.job.id}`}><Button outline={true}>APRI</Button></Link>
+                        <Link to={`/jobOffer/${jobOffer.id}`}><Button outline={true}>APRI</Button></Link>
                     </Card>
                 )}
             </div>

@@ -1,0 +1,64 @@
+[
+    {
+        "label": "Email",
+        "type": "email",
+        "key": "email",
+        "tag": "input",
+        "placeholder": "Email Aziendale"
+    },
+    {
+        "label": "Nome",
+        "type": "text",
+        "key": "name",
+        "tag": "input",
+        "placeholder": "Nome Azienda"
+    },
+    {
+        "label": "Descrizione del lavoro",
+        "type": "text",
+        "key": "description",
+        "tag": "textarea",
+        "placeholder": "Breve descrizione dell'azienda..."
+    },
+    {
+        "label": "Nazione dove risiede l'azienda",
+        "type": "text",
+        "key": "hq_country",
+        "tag": "input",
+        "placeholder": "Italia"
+    },
+    {
+        "label": "Citta della sede principale",
+        "type": "text",
+        "key": "hq_city",
+        "tag": "input",
+        "placeholder": "Roma"
+    },
+    {
+        "label": "Indirizzo della sede principale",
+        "type": "text",
+        "key": "hq_address",
+        "tag": "input",
+        "placeholder": "Via Nazionale"
+    },
+    {
+        "label": "Sito Aziendale",
+        "type": "text",
+        "key": "website",
+        "tag": "input",
+        "placeholder": "www.google.com"
+    },
+    {
+        "label": "Numero Dipendenti",
+        "type": "number",
+        "key": "employees_amount",
+        "tag": "input",
+        "placeholder": "42"
+    },
+    {
+        "label": "Data Nascita Azienda",
+        "type": "date",
+        "tag": "input",
+        "key": "birthdate"
+    }
+]

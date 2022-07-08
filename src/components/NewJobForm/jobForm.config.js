@@ -1,4 +1,4 @@
-[
+export const jobFormConfig = [
     {
         "label": "Ruolo",
         "type": "text",
@@ -84,4 +84,4 @@
         "key": "salary_range",
         "placeholder": "30.000-40.000 in base al candidato"
     }
-]
+];

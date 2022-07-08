@@ -1,102 +1,90 @@
-[
+export const candidateFormConfig = [
     {
         "key": "name",
-        "checked": true,
-        "disabled": true,
         "text": "Nome"
     },
     {
         "key": "lastname",
-        "checked": true,
-        "disabled": true,
         "text": "Cognome"
     },
     {
         "key": "birthdate",
-        "checked": true,
-        "disabled": true,
         "text": "Data di Nascita"
     },
     {
         "key": "email",
-        "checked": true,
-        "disabled": true,
         "text": "Email"
     },
     {
         "key": "phoneNumber",
-        "checked": false,
         "text": "Numero di Cellulare"
     },
     {
         "key": "photo",
-        "checked": false,
         "text": "Foto"
     },
     {
         "key": "currentSalary",
-        "checked": false,
         "text": "RAL Attuale"
     },
     {
         "key": "portfolio",
-        "checked": false,
         "text": "Link Portfolio"
     },
     {
         "key": "cv",
-        "checked": true,
-        "disabled": true,
         "text": "Curriculum Vitae (File PDF)"
     },
     {
         "key": "salaryCheck",
-        "checked": false,
         "text": "Ultima Busta Paga - (File PDF/IMG)"
     },
     {
         "key": "shortBio",
-        "checked": false,
         "text": "Breve Descrizione Personale"
     },
     {
         "key": "notice",
-        "checked": false,
         "text": "Quanti Giorni di Preavviso dopo Dimissioni"
     },
     {
         "key": "unemployed",
-        "checked": false,
         "text": "Se disoccupato attualmente"
     },
     {
         "key": "height",
-        "checked": false,
         "text": "Altezza (metri)"
     },
     {
         "key": "weight",
-        "checked": false,
         "text": "Peso (Kg)"
     },
     {
-        "key": "vita",
-        "checked": false,
-        "text": "Circonferenza della Vita - (cm)"
-    },
-    {
         "key": "hasSons",
-        "checked": false,
         "text": "Se ha Figli a carico"
     },
     {
         "key": "english",
-        "checked": false,
-        "text": "Se ha Lingua Inglese B1"
+        "text": "Puoi parlare Inglese"
     },
     {
-        "key": "english",
+        "key": "englishB1",
         "checked": false,
-        "text": "Se ha Lingua Inglese C1"
-    }
-]
+        "text": "Certificato Inglese B1"
+    },
+    {
+        "key": "englishB2",
+        "checked": false,
+        "text": "Certificato Inglese B2"
+    },
+    {
+        "key": "englishC1",
+        "checked": false,
+        "text": "Certificato Inglese C1"
+    },
+    {
+        "key": "englishC2",
+        "checked": false,
+        "text": "Certificato Inglese C2"
+    },
+];

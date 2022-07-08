@@ -1,63 +1,74 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classes from './Quiz.module.css';
 import '../../global.css';
 import Card from '../../UI/Card/Card';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { loadJSON } from '../../utils';
 import Button from '../../UI/Button/Button';
 import Form from '../../UI/Form/Form';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import { addQuiz, getJobOfferQuiz } from '../../lib/api';
+import AppContext from '../../store/app-context';
+import { quizConfig } from './quizConfig';
 
 const Quiz = () => {
     const navigate = useNavigate();
-    const [tests, setQuiz] = useState(undefined);
+    const params = useParams();
+    const ctx = useContext(AppContext);
+    const [isLoading, setIsLoading] = useState(false);
+    const [tests, setTests] = useState([]);
+    const [formInputs] = useState(quizConfig);
+    const [formValue, setFormValue] = useState(undefined);
 
-    useEffect(() => {
-        loadJSON('../testsSample.json')
-        .then(sample => setQuiz(sample));
-    }, []);
+    useEffect(() => { getQuiz(); }, []);
 
-    if (!tests) return (<p>Loading...</p>);
+    if (isLoading) return (<div className="flex fCenter"><LoadingSpinner /></div>);
 
-    const onSaveHandler = (event) => {
-        navigate('/', {replace: true});
+    const getQuiz = () => {
+        const quizId = params.quizId;
+        if (quizId !== 'new') {
+            setIsLoading(true);
+            getJobOfferQuiz(quizId)
+            .then((data) => { 
+                setFormValue({...data.jQuiz, ...data.quiz}); 
+                setTests(data.tests);
+                setIsLoading(false); 
+            })
+            .catch(err => {
+                setIsLoading(false); 
+                console.log(err);
+            });
+        }
+    }
+
+    const onSaveHandler = (newFormValue) => {
+        const data = { 
+            ...formValue, 
+            ...newFormValue,
+            job_offer_id: +params.jobOfferId, 
+            required: +params.required, 
+            company_id: +ctx.companyId 
+        }
+        setFormValue(data);
+        addQuiz(data, params.quizId)
+        .then(() => { setFormValue(undefined); navigate(-1); })
+        .catch(err => {
+            setIsLoading(false); 
+            alert(err.message)
+        });
     };
 
     return (
         <Card className="flex fColumn gap40 w80 mAuto pad20">
-            <Form title="Configura Test" config={
-                [
-                    {
-                        "label": "Argomanto Test",
-                        "type": "text",
-                        "key": "topic",
-                        "tag": "input",
-                        "placeholder": ""
-                    },
-                    {
-                        "label": "Tempo totale a disposizione",
-                        "key": "timer",
-                        "tag": "select",
-                        "options": ["5 minuti", "10 minuti", "15 minuti", "20 minuti", "25 minuti", "30 minuti", "40 minuti", "50 minuti", "60 minuti"]
-                    }
-                ]
-            }>
-                <div className="flex fRow aCenter gap15">
-                    <input className={classes.checkInput} type="checkbox" />
-                    <label>Foto Random durante il Test</label>
-                </div>
-                <div className="flex fRow aCenter gap15">
-                    <input className={classes.checkInput} type="checkbox" />
-                    <label>Registrazioni Random durante il test</label>
-                </div>
-            </Form>
+            <Form title="Configura Test" config={formInputs} defaultValues={formValue} onSave={onSaveHandler} />
             <p className={classes.title}>Domande</p>
             {tests.map((test, idx) =>
                 <Card key={test.id} className="flex fColumn gap20 pad15">
-                    <p className={classes.question}>{test.id} - {test.question.text}</p>
-                    <Link to={'/test/' + test.id}><Button outline={true}>apri</Button></Link>
+                    <p className={classes.question}>{test.id} - {test.question}</p>
+                    <Link to={'/test/' + test.id + '/' + params.quizId + '/' + (tests.length+1)}><Button outline={true}>apri</Button></Link>
                 </Card>
             )}
-            <Link to={'/test/new'}><Button className="fBold">AGGIUNGI DOMANDA</Button></Link>
+            <Link to={'/test/new/' + params.quizId + '/' + (tests.length+1)}><Button className="fBold">AGGIUNGI DOMANDA</Button></Link>
         </Card>
     );
 };

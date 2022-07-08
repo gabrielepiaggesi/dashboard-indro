@@ -4,48 +4,54 @@ import '../../global.css';
 import Card from '../../UI/Card/Card';
 import Button from '../../UI/Button/Button';
 import { loadJSON } from '../../utils';
+import { Link } from 'react-router-dom';
 
 const JobOffer = (props) => {
-    const [jobOffer, setJobOffer] = useState(undefined);
+    const [jobOffer, setJobOffer] = useState(props.jobOffer?.jOffer || undefined);
+    const [skills, setSkills] = useState(props.jobOffer?.skills || undefined);
 
-    useEffect(() => {
-        loadJSON('../jobOffersSample.json')
-        .then(sample => {
-            const jobOffer = sample.find((jO) => jO.id === +props.id);
-            setJobOffer(jobOffer);
-        });
-    }, []);
+    // useEffect(() => {
+    //     loadJSON('../jobOffersSample.json')
+    //     .then(sample => {
+    //         const jobOffer = sample.find((jO) => jO.id === +props.id);
+    //         setJobOffer(jobOffer);
+    //     });
+    // }, []);
 
     if (!jobOffer) return (<p>Loading...</p>);
 
     return (
         <Card className="pad15 flex fColumn gap40">
             <div className={`flex fColumn gap10 ${classes.section}`}>
-                <p>{jobOffer.job.role}</p>
-                <p>{jobOffer.job.address} - {jobOffer.job.city}, {jobOffer.job.country}</p>
+                <p>{jobOffer.role}</p>
+                <p>{jobOffer.address} - {jobOffer.city}, {jobOffer.country}</p>
             </div>
             <div className={`flex fColumn gap10 ${classes.section}`}>
                 <p>Job Descritpion</p>
-                <p>{jobOffer.job.jobDescription}</p>
+                <p>{jobOffer.description}</p>
             </div>
             <div className={`flex fColumn gap10 ${classes.section}`}>
                 <p>Requirements</p>
-                <p>{jobOffer.job.requirements}</p>
+                <ul>
+                    {skills.filter(s => !!s.required).map(sk => <li key={sk.id}><strong>{sk.text}</strong></li>)}
+                </ul>
             </div>
             <div className={`flex fColumn gap10 ${classes.section}`}>
                 <p>Nice to have</p>
-                <p>{jobOffer.job.niceToHave}</p>
+                <ul>
+                    {skills.filter(s => !s.required).map(sk => <li key={sk.id}><strong>{sk.text}</strong></li>)}
+                </ul>
             </div>
             <div className={`flex fColumn gap10 ${classes.section}`}>
                 <p>General Info</p>
                 <ul>
-                    <li>Modalita Lavoro: <strong>{jobOffer.job.mode}</strong></li>
-                    <li>Tipologia contratto: <strong>{jobOffer.job.type} - {jobOffer.job.contract}</strong></li>
-                    <li>Dotazione fornita: <strong>{jobOffer.job.companyEquipment}</strong></li>
-                    <li>Salario: <strong>{jobOffer.job.RAL}</strong></li>
+                    <li>Modalita Lavoro: <strong>{jobOffer.mode}</strong></li>
+                    <li>Tipologia contratto: <strong>{jobOffer.type} - {jobOffer.contract_type}</strong></li>
+                    <li>Dotazione fornita: <strong>{jobOffer.equipment}</strong></li>
+                    <li>Salario: <strong>{jobOffer.salary_range}</strong></li>
                 </ul>
             </div>
-            <Button outline={true}>MODIFICA</Button>
+            <Link to={`/newJobForm/${jobOffer.company_id}/${jobOffer.id}`}><Button outline={true}>MODIFICA</Button></Link>
         </Card>
     );
 };

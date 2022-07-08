@@ -1,0 +1,15 @@
+.title {
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+    font-size: 36px;
+    margin: 0;
+}
+label {
+    font-size: 23px;
+}
+select {
+    font-size: 21px;
+    border: none;
+    outline: none;
+}

@@ -22,3 +22,11 @@ td {
     padding: 15px;
     border: 1px solid rgba(66, 66, 66, 0.10);
 }
+.noRows {
+    position: absolute;
+    top: 30%;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+}

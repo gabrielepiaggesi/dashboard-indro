@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from './components/Header/Header';
 import JobOffersList from './components/JobOffersList/JobOffersList';
 import JobOfferOverview from './components/JobOfferOverview/JobOfferOverview';
@@ -10,6 +10,9 @@ import Test from './pages/Test/Test';
 import Quiz from './pages/Quiz/Quiz';
 import Login from './pages/Login/Login';
 import CandidateProfile from './pages/CandidateProfile/CandidateProfile';
+import AppContext from './store/app-context';
+import CompaniesList from './components/CompaniesList/CompaniesList';
+import NewCompanyForm from './components/NewCompanyForm/NewCompanyForm';
 
 export const Layout = (props) => {
   return (
@@ -24,25 +27,27 @@ export const Router = (props) => {
   return (
     <Routes>
       <Route path="/" element={props.children} />
+      <Route path="/jobOffers/:companyId" element={<JobOffersList />} />
       <Route path="/jobOffer/:jobOfferId" element={<JobOfferOverview />} />
-      <Route path="/new" element={<NewJobForm />} />
-      <Route path="/candidateForm" element={<CandidateForm />} />
-      <Route path="/quiz/:quizId" element={<Quiz />} />
-      <Route path="/test/:testId" element={<Test />} />
+      <Route path="/newJobForm/:companyId/:jobOfferId" element={<NewJobForm />} />
+      <Route path="/newCompany" element={<NewCompanyForm />} />
+      <Route path="/candidateForm/:jobOfferId" element={<CandidateForm />} />
+      <Route path="/quiz/:quizId/:jobOfferId/:required" element={<Quiz />} />
+      <Route path="/test/:testId/:quizId/:positionOrder" element={<Test />} />
       <Route path="/profile/:userId" element={<CandidateProfile />} />
     </Routes>
   )
 };
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const ctx = useContext(AppContext);
 
-  if (!isLogged) return (<Login onLogin={() => setIsLogged(true)} />)
+  if (!ctx.isLoggedIn) return (<Login onLogin={(data) => ctx.onLogin(data)} />)
 
   return (
-    <Layout onLogout={() => setIsLogged(false)}>
+    <Layout onLogout={ctx.onLogout}>
       <Router>
-        <JobOffersList />
+        <CompaniesList />
       </Router>
     </Layout>
   );
