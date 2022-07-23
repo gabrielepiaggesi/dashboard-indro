@@ -3,7 +3,7 @@ import '../../global.css';
 
 const Card = (props) => {
     return (
-        <div className={`bgrW br5 boxSha ${props.className}`}>{props.children}</div>
+        <div className={`bgrW br5 brC ${props.className}`}>{props.children}</div>
     );
 };
 

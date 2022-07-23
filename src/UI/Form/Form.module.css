@@ -10,7 +10,7 @@
 }
 .form input, .form textarea, .form select {
     font-size: 21px;
-    border: none;
+    /* border: none; */
     outline: none;
 }
 .form .checkInput {
@@ -25,4 +25,13 @@
 }
 .checkInput:not([disabled]) {
     cursor: pointer;
+}
+.fakeButton {
+    padding: 10px;
+    cursor: pointer;
+    display: inline;
+    width: fit-content;
+    border: 1px solid rgba(53, 121, 96, 0.5);
+    background-color: white;
+    color: #357960;
 }

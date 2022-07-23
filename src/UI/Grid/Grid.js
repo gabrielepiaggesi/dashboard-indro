@@ -22,6 +22,7 @@ const sortRows = (initialRows, sortColumn, sortDirection) => rows => {
 
 const Grid = (props) => {
     const [rows, setRows] = useState(props.rows);
+    console.log(props.columns);
 
     const onSortHandler = (idx) => {
         let sortDir = props.columns[idx].sortDir;
@@ -67,13 +68,18 @@ const Grid = (props) => {
             <table className={classes.grid}>
                 <thead>
                     <tr key={-1} className={classes.header}>
-                        {props.columns.map((col, colIdx) => <td key={-1+"-"+colIdx} onClick={() => onSortHandler(colIdx)}>{col.name}</td>)}
+                        {props.columns.map((col, colIdx) => 
+                        <td key={-1+"-"+colIdx} style={col ==='space' ? {background: '#f5f6f6'} : {}} onClick={() => onSortHandler(colIdx)}>
+                            <div style={{width: 'max-content'}}>
+                            {col.extraLabel && <span>({col.extraLabel})</span>} <strong>{col.label}</strong>
+                            </div>
+                        </td>)}
                     </tr>
                 </thead>
                 <tbody>
                     {rows.map((row, rowIdx) =>
                         <tr key={rowIdx} onClick={() => props.onRowClick(row, rowIdx)}>
-                            {props.columns.map((col, colIdx) => <td key={rowIdx+"-"+colIdx}>{row[col.key]}</td>)}
+                            {props.columns.map((col, colIdx) => <td style={col === 'space' ? {background: '#f5f6f6'} : {}} key={rowIdx+"-"+colIdx}><span>{row[col.key]}</span></td>)}
                         </tr>
                     )}
                 </tbody>
@@ -83,3 +89,5 @@ const Grid = (props) => {
 };
 
 export default Grid;
+
+// #f5f6f6

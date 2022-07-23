@@ -70,8 +70,8 @@ const NewJobForm = (props) => {
 
     const transformFormValue = (formValue) => {
         let dto = { jobOffer: null, skills: null };
-        const requiredSkills = formValue.requiredSkills.map(text => ({ required: 1, text }));
-        const bonusSkills = formValue.bonusSkills.map(text => ({ required: 0, text }));
+        const requiredSkills = formValue.requiredSkills ? formValue.requiredSkills.map(text => ({ required: 1, text })) : [];
+        const bonusSkills = formValue.bonusSkills ? formValue.bonusSkills.map(text => ({ required: 0, text })) : [];
         dto.skills = requiredSkills.concat(bonusSkills);
         delete formValue.requiredSkills;
         delete formValue.bonusSkills;

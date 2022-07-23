@@ -4,13 +4,16 @@
     width: 100%;
     border-bottom: 1px lightgrey solid;
     font-size: 28px;
-    background-color: white;
+    background-color: #008080;
     height: 80px;
     z-index: 1000;
+    color: white;
 }
 .logo {
     width: 42px;
     height: 42px;
     background-position: center;
     background-size: cover;
+    background-color: white;
+    border-radius: 42px;
 }

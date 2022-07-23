@@ -20,7 +20,12 @@ const Form = (props) => {
     const [userInfos, setUserInfos] = useState(transformInputs(props.config, props.defaultValues));
     const [btnDisabled, setBtnDisabled] = useState(false);
     const [btnKey, setBtnKey] = useState(undefined);
+    const [fileUrls, setFileUrls] = useState([]);
     let lastInputValue = "";
+
+    useEffect(() => {
+        return () => fileUrls.forEach(url => { console.log('REMOVING ', url);  URL.revokeObjectURL(url); })
+    }, [])
 
     const onInputChange = (event) => {
         lastInputValue = event.target.value;
@@ -41,6 +46,12 @@ const Form = (props) => {
             }
             if (userInfos[idx].type === 'number') {
                 formValue[key] = +formValue[key];
+            }
+            if (userInfos[idx].type === 'file' && event.target.elements[key]?.files && event.target.elements[key]?.files.length) {
+                formValue[key] = event.target.elements[key]?.files[0];
+            }
+            if (userInfos[idx].type === 'file' && userInfos[idx].value === 'cancel') {
+                formValue[key] = 'cancel';
             }
         });
         props.onSave(formValue);
@@ -93,6 +104,20 @@ const Form = (props) => {
         setBtnDisabled(false);
     };
 
+    const onFileChangeHandler = (event, info, infoIdx) => {
+        const objectUrl = URL.createObjectURL(event.target.files[0]);
+        setFileUrls(prevState => [...prevState, objectUrl]);
+        info.value = objectUrl;
+        userInfos[infoIdx].value = objectUrl;
+        setUserInfos(prevState => ([...userInfos]));
+        console.log(userInfos[infoIdx]);
+    }
+
+    const onFileRemoveHandler = (infoIdx) => {
+        userInfos[infoIdx].value = 'cancel';
+        setUserInfos(prevState => ([...userInfos]));
+    }
+
     return (
         <>
             {props.title && <p className={classes.title}>{props.title}</p>}
@@ -102,7 +127,7 @@ const Form = (props) => {
                     (info.type === "checkbox") ? 
                     <div key={info.key} className="flex fRow aCenter gap15">
                         <input 
-                                className={`pad15 br5 boxSha ${classes.checkInput}`}
+                                className={`pad15 br5 brC ${classes.checkInput}`}
                                 type={info.type} 
                                 name={info.key} 
                                 placeholder={info.placeholder}
@@ -117,16 +142,24 @@ const Form = (props) => {
                     <div key={info.key} className="flex fColumn gap10">
                         <label>{info.label}</label>
                         {(info.tag === "input") && 
+                        <>
+                            {info.type === 'file' && info.value && info.value !== 'cancel' && <img src={info.value} width="200" alt={info.value} />}
+                            {info.type === 'file' && info.value && info.value !== 'cancel' && <label className={`pad15 br5 ${classes.fakeButton}`} htmlFor={info.key}>cambia immagine</label>}
+                            {info.type === 'file' && info.value && info.value !== 'cancel' && <label className={`pad15 br5 ${classes.fakeButton}`} onClick={() => onFileRemoveHandler(infoIdx)}>imposta questo test senza una immagine</label>}
                             <input 
-                                className="pad15 br5 boxSha" 
+                                className="pad15 br5 brC" 
                                 type={info.type} 
                                 name={info.key} 
+                                id={info.key}
+                                style={(info.type === 'file' && info.value) ? {visibility: 'hidden'} : {} }
                                 placeholder={info.placeholder}
-                                defaultValue={info.value || null}
+                                defaultValue={info.type !== 'file' ? (info.value || null) : null}
+                                onChange={(e) => info.type === 'file' && onFileChangeHandler(e, info, infoIdx)}
                             />
+                        </>
                         }
                         {(info.tag === "select") && 
-                            <select className="pad15 br5 f1 boxSha" name={info.key} defaultValue={info.value || null}>
+                            <select className="pad15 br5 f1 brC" name={info.key} defaultValue={info.value || null}>
                                 {info.options && info.options.map((opt, idx) => 
                                     <option key={info.key + '-' + opt} id={idx+opt} value={opt}>{opt}</option>
                                 )}
@@ -138,7 +171,7 @@ const Form = (props) => {
                             </select>
                         }
                         {(info.tag === "textarea") && 
-                            <textarea className="pad15 br5 boxSha" defaultValue={info.value || null} type={info.type} name={info.key} placeholder={info.placeholder} />
+                            <textarea className="pad15 br5 brC" defaultValue={info.value || null} type={info.type} name={info.key} placeholder={info.placeholder} />
                         }
                         {(info.tag === "ul") && 
                             (
@@ -148,7 +181,7 @@ const Form = (props) => {
                                             <input 
                                                 disabled={elem.saved}
                                                 key={elem.id || 'input'+info.key+elemIdx} 
-                                                className="pad15 br5 f1 boxSha" 
+                                                className="pad15 br5 f1 brC" 
                                                 type={info.type} 
                                                 name={info.key+"_"+elemIdx} 
                                                 defaultValue={elem.value} 

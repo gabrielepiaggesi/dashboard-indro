@@ -225,3 +225,6 @@ textarea {
     font-size: 16px;
     margin: 0;
 }
+.brC {
+    border: 1px solid rgba(0, 128, 128, 0.25);
+}

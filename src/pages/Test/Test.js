@@ -6,7 +6,8 @@ import Form from '../../UI/Form/Form';
 import { multipleType, testConfig } from './testConfig';
 import classes from './Test.module.css';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import { addQuizTest, createNewTestOption, createNewTestText, getQuizTest, removeTestOption, removeTestText, updateTestOption, updateTestText } from '../../lib/api';
+import { addQuizTest, createNewTestOption, createNewTestText, getQuizTest, removeTest, removeTestOption, removeTestText, updateTestOption, updateTestText } from '../../lib/api';
+import Button from '../../UI/Button/Button';
 
 const Test = () => {
     const params = useParams();
@@ -55,7 +56,9 @@ const Test = () => {
         const formValue = data.test;
         formValue.options = data.options.length ? data.options.map(o => ({value: o.option_text, saved: true, id: o.id})) : [];
         formValue.texts = data.texts.length ? data.texts.map(o => ({value: o.text, saved: true, id: o.id})): [];
+        formValue.images = data.images.length ? data.images.map(o => ({value: o.image_url, saved: true, id: o.id})): [];
         formValue.right_option = data.options.length ? data.options.filter(o => o.is_correct)[0].option_text : undefined;
+        formValue.file = data.images.length ? data.images[0].image_url : null;
         setFormValue(formValue);
     };
 
@@ -65,7 +68,7 @@ const Test = () => {
             test: getTestGeneralConfig(newFormValue),
             options: getTestOptions(newFormValue),
             texts: getTestTexts(newFormValue),
-            files: [{file: newFormValue.file, position_order: 0}]
+            fileDetails: {file: newFormValue.file, position_order: 0}
         };
         addQuizTest(data, params.testId)
         .then(() => { setFormValue(undefined); navigate(-1, {replace: true}); })
@@ -207,6 +210,17 @@ const Test = () => {
         });
     }
 
+    const onDeleteTestHandler = () => {
+        setIsLoading(true)
+        removeTest(testData.test.quiz_id, testData.test.id)
+        .then(() => { setFormValue(undefined); navigate(-1, {replace: true}); })
+        .catch(err => {
+            setIsLoading(false); 
+            alert(err.message);
+            navigate(-1, {replace: true});
+        });
+    }
+
     return (
         <Card className="flex fColumn gap20 pad20 w80 mAuto">
             <p className={classes.title}>Configura la Domanda</p>
@@ -226,6 +240,7 @@ const Test = () => {
                 onSaveItem={onSaveItem}
                 onDeleteItem={onDeleteItem}
             />
+            {params.testId !== 'new' && <Button outline={true} onClick={onDeleteTestHandler}>ELIMINA DOMANDA</Button>}
         </Card>
     );
 };

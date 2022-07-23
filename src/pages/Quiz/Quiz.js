@@ -7,7 +7,7 @@ import { loadJSON } from '../../utils';
 import Button from '../../UI/Button/Button';
 import Form from '../../UI/Form/Form';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import { addQuiz, getJobOfferQuiz } from '../../lib/api';
+import { addQuiz, getJobOfferQuiz, removeQuiz } from '../../lib/api';
 import AppContext from '../../store/app-context';
 import { quizConfig } from './quizConfig';
 
@@ -58,6 +58,17 @@ const Quiz = () => {
         });
     };
 
+    const onDeleteQuizHandler = () => {
+        setIsLoading(true)
+        removeQuiz(params.quizId)
+        .then(() => { setFormValue(undefined); navigate(-1, {replace: true}); })
+        .catch(err => {
+            setIsLoading(false); 
+            alert(err.message);
+            navigate(-1, {replace: true});
+        });
+    }
+
     return (
         <Card className="flex fColumn gap40 w80 mAuto pad20">
             <Form title="Configura Test" config={formInputs} defaultValues={formValue} onSave={onSaveHandler} />
@@ -69,6 +80,8 @@ const Quiz = () => {
                 </Card>
             )}
             <Link to={'/test/new/' + params.quizId + '/' + (tests.length+1)}><Button className="fBold">AGGIUNGI DOMANDA</Button></Link>
+
+            {params.quizId !== 'new' && <Button outline={true} onClick={onDeleteQuizHandler}>ELIMINA TEST</Button>}
         </Card>
     );
 };

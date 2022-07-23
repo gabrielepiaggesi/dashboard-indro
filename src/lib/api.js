@@ -10,6 +10,12 @@ const getHeaders = () => {
   };
 };
 
+const getTokenHeaders = () => {
+  return {
+    'Authorization': 'Bearer ' + TOKEN
+  };
+};
+
 export function setToken(token) { 
   TOKEN = token; 
 }
@@ -119,7 +125,7 @@ export async function addQuiz(data, jQuizId = null) {
     body: JSON.stringify(data),
     headers: getHeaders()
   };
-  const response = await fetch(`${BASE_URL}/quiz/${jQuizId ? 'updateQuiz/'+jQuizId : 'createQuiz'}`, opts);
+  const response = await fetch(`${BASE_URL}/quiz/${jQuizId && jQuizId !== 'new' ? 'updateQuiz/'+jQuizId : 'createQuiz'}`, opts);
   const jsonRes = await response.json();
   if (!response.ok) {
     throw new Error(jsonRes.message || 'Could not addQuiz');
@@ -138,10 +144,19 @@ export async function getJobOfferQuiz(quizId) {
 
 
 export async function addQuizTest(data, testId = null) {
+  console.log(data);
+  const file = data.fileDetails.file;
+  let formData = new FormData();
+  file && file !== '' && file !== ' ' && formData.append('file', file);
+  if (data.fileDetails.file === 'cancel') data.test.file = 'cancel';
+  formData.append('data', JSON.stringify(testId === 'new' ? data : data.test));
+  // Object.keys(data).forEach(key => {
+  //   formData.append(key, data[key]);
+  // });
   const opts = {
     method: 'POST',
-    body: JSON.stringify(testId !== 'new' ? data.test : data),
-    headers: getHeaders()
+    body: formData,
+    headers: getTokenHeaders()
   };
   const response = await fetch(`${BASE_URL}/quiz/${testId && testId !== 'new' ? 'updateTest/'+testId : 'createTest'}`, opts);
   const jsonRes = await response.json();
@@ -339,6 +354,51 @@ export async function updateJobOffer(jobOffer, jobOfferId) {
   const jsonRes = await response.json();
   if (!response.ok) {
     throw new Error(jsonRes.message || 'Could not deleteJobOfferSkill');
+  }
+  return jsonRes;
+}
+
+export async function removeTest(quizId, testId) {
+  const opts = {
+    method: 'POST',
+    headers: getHeaders()
+  };
+  const response = await fetch(`${BASE_URL}/quiz/removeTest/${testId}/${quizId}`, opts);
+  const jsonRes = await response.json();
+  if (!response.ok) {
+    throw new Error(jsonRes.message || 'Could not removeTest');
+  }
+  return jsonRes;
+}
+
+
+export async function removeQuiz(quizId) {
+  const opts = {
+    method: 'POST',
+    headers: getHeaders()
+  };
+  const response = await fetch(`${BASE_URL}/quiz/removeQuiz/${quizId}`, opts);
+  const jsonRes = await response.json();
+  if (!response.ok) {
+    throw new Error(jsonRes.message || 'Could not removeQuiz');
+  }
+  return jsonRes;
+}
+
+export async function getCandidateData(userId, jobOfferId) {
+  const response = await fetch(`${BASE_URL}/jobOffer/getUserData/${userId}/${jobOfferId}`, { headers: getHeaders() });
+  const jsonRes = await response.json();
+  if (!response.ok) {
+    throw new Error(jsonRes.message || 'Could not getJobOfferUserData');
+  }
+  return jsonRes;
+}
+
+export async function getUserTestsImages(userId, jobOfferId) {
+  const response = await fetch(`${BASE_URL}/userApplication/getUserTestsImages/${userId}/${jobOfferId}`, { headers: getHeaders() });
+  const jsonRes = await response.json();
+  if (!response.ok) {
+    throw new Error(jsonRes.message || 'Could not getUserTestsImages');
   }
   return jsonRes;
 }

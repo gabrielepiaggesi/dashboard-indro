@@ -2,21 +2,23 @@
     width: 100%;
     font-size: 18px;
     position: relative;
-    background-color: transparent;
-}
+    /* background-color: #999999; */
+}*
 tr {
     background-color: white;
     cursor: pointer;
 }
 tbody tr:hover {
-    background-color: transparent;
+    background-color: #f5f6f6;
 }
 .header {
     background-color: #f5f6f6;
-    font-weight: 500;
     font-size: 21px;
     position: sticky;
     top: 0;
+}
+.header strong {
+    font-weight: 500;
 }
 td {
     padding: 15px;

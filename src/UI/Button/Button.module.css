@@ -1,8 +1,8 @@
 .button {
     width: fit-content;
     padding: 15px 15px;
-    border: 0.2px solid #357960;
-    background-color: #357960;
+    border: 0.2px solid rgba(0, 128, 128, 1);
+    background-color: rgba(0, 128, 128, 1);
     color: white;
     cursor: pointer;
     font-size: 18px;
@@ -13,7 +13,7 @@
     cursor: not-allowed;
 }
 .outline {
-    border-color: rgba(53, 121, 96, 0.5);
+    border-color: rgba(0, 128, 128, 0.5);
     background-color: white;
     color: #357960;
 }

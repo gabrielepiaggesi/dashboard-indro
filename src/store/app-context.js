@@ -5,8 +5,9 @@ const AppContext = React.createContext({
     isLoggedIn: false,
     userDetails: undefined,
     token: undefined,
-    onLogout: () => {},
+    companyId: 0,
     setCompany: () => {},
+    onLogout: () => {},
     onLogin: (email, token, userId) => {}
 });
 
@@ -19,17 +20,20 @@ export const AppContextProvider = (props) => {
     useEffect(() => {
         const userSaved = localStorage.getItem('userDetails');
         const userToken = localStorage.getItem('userToken');
+        const companyIdSaved = localStorage.getItem('companyId');
         if (userSaved && userToken) {
             setUserDetails(JSON.parse(userSaved));
             setIsLoggedIn(true);
             setToken(userToken);
             setUserToken(userToken);
         }
+        if (companyIdSaved) setCompanyId(+companyIdSaved);
       }, []); // this runs only after the component and only if the dependencies are changed, but by passing an empty array of deps, deps will never change so this will run just when the component is called the first time
 
     const logoutHandler = () => {
         localStorage.removeItem('userDetails');
         localStorage.removeItem('userToken');
+        localStorage.removeItem('companyId');
         setIsLoggedIn(false);
     };
 
@@ -45,7 +49,7 @@ export const AppContextProvider = (props) => {
         setUserToken(userDetails.token);
     };
 
-    const setCompany = (id) => setCompanyId(id);
+    const setCompany = (id) => { localStorage.setItem('companyId', id); setCompanyId(id); };
 
     return (
         <AppContext.Provider value={{ 

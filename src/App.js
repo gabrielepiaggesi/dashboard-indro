@@ -13,6 +13,7 @@ import CandidateProfile from './pages/CandidateProfile/CandidateProfile';
 import AppContext from './store/app-context';
 import CompaniesList from './components/CompaniesList/CompaniesList';
 import NewCompanyForm from './components/NewCompanyForm/NewCompanyForm';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 export const Layout = (props) => {
   return (
@@ -34,15 +35,18 @@ export const Router = (props) => {
       <Route path="/candidateForm/:jobOfferId" element={<CandidateForm />} />
       <Route path="/quiz/:quizId/:jobOfferId/:required" element={<Quiz />} />
       <Route path="/test/:testId/:quizId/:positionOrder" element={<Test />} />
-      <Route path="/profile/:userId" element={<CandidateProfile />} />
+      <Route path="/profile/:userId/:jobOfferId" element={<CandidateProfile />} />
     </Routes>
   )
 };
 
 function App() {
   const ctx = useContext(AppContext);
+  const navigate = useNavigate();
 
   if (!ctx.isLoggedIn) return (<Login onLogin={(data) => ctx.onLogin(data)} />)
+
+  if (!ctx.companyId) navigate('/', {replace: true});
 
   return (
     <Layout onLogout={ctx.onLogout}>

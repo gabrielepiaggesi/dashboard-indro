@@ -45,7 +45,7 @@ export const candidateFormConfig = [
     },
     {
         "key": "notice",
-        "text": "Quanti Giorni di Preavviso dopo Dimissioni"
+        "text": "Preavviso"
     },
     {
         "key": "unemployed",

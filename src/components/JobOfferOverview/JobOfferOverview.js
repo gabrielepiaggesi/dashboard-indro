@@ -27,8 +27,9 @@ const JobOfferOverview = () => {
         .then(data => {
             setOverview({
                 jobOffer: data[0],
-                quizs: data[1],
-                results: data[2]
+                quizs: data[1].quizs,
+                results: data[2],
+                link: 'https://localhost:3000/?jobOffer=' + data[0].link.uuid
             });
         })
         .catch(err => {
@@ -48,7 +49,7 @@ const JobOfferOverview = () => {
 
     return (
         <div className="flex fColumn gap40 w80 mAuto">
-            <JobOfferResults results={overview.results} />
+            <JobOfferResults jobOfferId={params.jobOfferId} link={overview.link} columns={overview.results.columns} results={overview.results.usersResults}/>
             <JobOfferQuizList 
                 title="Test Competenze Richieste" 
                 quizs={overview.quizs.filter(q => !!q.required)} 
